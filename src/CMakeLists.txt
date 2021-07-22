@@ -1,7 +1,29 @@
 
 
-file(GLOB_RECURSE HEADER_LIST "${PROJECT_SOURCE_DIR}/include/*.hpp")
-file(GLOB SOURCE_LIST ${PROJECT_SOURCE_DIR}/src/*.cpp)
+
+set (include_dir "${CMAKE_CURRENT_LIST_DIR}/../include/ph_time")
+set (src_dir "${CMAKE_CURRENT_LIST_DIR}")
+
+ph_create_modules (
+
+	MODULES 
+		"Date"
+		"Day"
+		"Hour"
+		"Month"
+		"Second"
+		"time"
+		"Year"
+
+	INCLUDE
+		"${include_dir}"
+
+	SRC 
+		"${src_dir}"
+)
+
+file(GLOB_RECURSE HEADER_LIST "${include_dir}/*.hpp")
+file(GLOB SOURCE_LIST "${src_dir}/*.cpp")
 
 set (self ph_time)
 
